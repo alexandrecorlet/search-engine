@@ -3,25 +3,14 @@ from nltk import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 
-class Splitter(object):
-
-    def __init__(self):
-        self.splitter = nltk.data.load('tokenizers/punkt/english.pickle')
-        self.tokenizer = nltk.tokenize.TreebankWordTokenizer()
-
-    def split(self,text):
-        # split into single sentence
-        sentences = self.splitter.tokenize(text)
-        # tokenization in each sentences
-        tokens = [self.tokenizer.tokenize(sent) for sent in sentences]
-        return tokens
+from Splitter import Splitter
 
 
 class LemmatizerWithPOSTagger(object):
 
-  def __init__(self):
-    self.lemmatizer = WordNetLemmatizer()
-    self.splitter = Splitter()
+    def __init__(self):
+        self.lemmatizer = WordNetLemmatizer()
+        self.splitter = Splitter()
 
     def get_wordnet_pos(self, treebank_tag):
         if treebank_tag.startswith('A'):
