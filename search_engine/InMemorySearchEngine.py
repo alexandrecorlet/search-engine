@@ -1,6 +1,6 @@
 import csv
-from Document import Document
-from InvertedIndex import InvertedIndex
+from search_engine.Document import Document
+from search_engine.InvertedIndex import InvertedIndex
 
 class InMemorySearchEngine():
     
@@ -14,5 +14,5 @@ class InMemorySearchEngine():
             return corpus
 
     def search(self, query):
-        return self.inverted_index.get_top_k(query, k=5)
+        return self.inverted_index.get_top_k(query, top_k=5)
 
